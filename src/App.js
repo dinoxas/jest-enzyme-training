@@ -37,7 +37,7 @@ class App extends Component {
     };
 
     return (
-      <div className='App'>
+      <div className='App' data-test='appComponent'>
         <Header />
         <section className='main'>
           <Headline
@@ -49,13 +49,13 @@ class App extends Component {
 
           {posts.length > 0 && (
             <div>
-              {posts.map((post) => {
-                const { id, title, body } = post;
+              {posts.map((post, index) => {
+                const { title, body } = post;
                 const configListItem = {
                   title,
                   desc: body
                 };
-                return <ListItem key={id} {...configListItem} />;
+                return <ListItem key={index} {...configListItem} />;
               })}
             </div>
           )}
