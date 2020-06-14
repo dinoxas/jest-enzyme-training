@@ -39,7 +39,6 @@ describe('Renders', () => {
     const button = findByTestAttr(wrapper, 'sharedButtonComponent');
     button.simulate('click');
     const callback = mockFn.mock.calls.length;
-    console.log(mockFn.mock.calls);
     expect(callback).toBe(1);
   });
 });

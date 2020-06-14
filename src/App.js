@@ -18,18 +18,38 @@ const user = [
   }
 ];
 
+const initialState = {
+  hideBtn: false
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      ...initialState
+    };
     this.fetchData = this.fetchData.bind(this);
+  }
+
+  updateState() {
+    const { hideBtn } = this.state;
+    this.setState({
+      hideBtn: !hideBtn
+    });
+  }
+
+  returnValue(num) {
+    return num + 1;
   }
 
   fetchData() {
     this.props.fetchPosts();
+    this.updateState();
   }
 
   render() {
     const { posts } = this.props;
+    const { hideBtn } = this.state;
 
     const configButton = {
       buttonText: 'Get posts',
@@ -45,7 +65,8 @@ class App extends Component {
             desc='Click the button to render posts!'
             user={user}
           />
-          <SharedButton {...configButton} />
+
+          {!hideBtn && <SharedButton {...configButton} />}
 
           {posts.length > 0 && (
             <div>

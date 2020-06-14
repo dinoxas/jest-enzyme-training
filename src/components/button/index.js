@@ -14,7 +14,6 @@ class SharedButton extends Component {
     return (
       <button
         className='button'
-        type='button'
         data-test='sharedButtonComponent'
         onClick={() => this.submitEvent()}
       >
